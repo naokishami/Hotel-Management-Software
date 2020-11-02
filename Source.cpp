@@ -33,6 +33,7 @@ struct guest {
 	int room_num;
 	float room_rate;
 	float total_charge;
+	string payments_made;
 	float balance;
 }gg[20];
 struct housekeeping {
@@ -133,12 +134,12 @@ void hotel::search(string generic) {
 	string value;
 	getline(cin >> ws, value);
 
-	cout << "Searching for " << value << "..." << endl;
+	cout << "Searching for " << value << "..." << endl << endl;
 	system("PAUSE");
 }
 void hotel::searchScreen() {
 	system("CLS");
-	cout << "Welcome to the search screen" << endl << endl;;
+	cout << "\n\n\nWelcome to the search screen" << endl << endl;;
 
 	cout << "1 -- Guests by First Name" << endl;
 	cout << "2 -- Guests by Last Name" << endl;
@@ -165,37 +166,36 @@ void hotel::searchScreen() {
 	search(look_up_table[num]);
 }
 void hotel::currentStayScreen() {
-	system("CLS");
-	vector<guest> guests;
+    guest *the_guest = new guest();
 
-	for (int i = 0; i < 20; i++) {
-		guests.push_back(guest());
-		guests[i].room_num = i + 1;
-	}
+    the_guest->f_name = "Billy";
+    the_guest->l_name = "Joe";
+    the_guest->check_in_date = "3/4/2020";
+    the_guest->check_in_time = "12:00PM";
+    the_guest->check_out_date = "3/5/2020";
+    the_guest->check_out_time = "5:00PM";
+    the_guest->room_type = "K";
+    the_guest->room_num = 23;
+    the_guest->room_rate = 34.56;
+    the_guest->total_charge = 34.56;
+    the_guest->payments_made = "Credit card";
+    the_guest->balance = 0.01;
 
-	guests[0].f_name = "Naoki";
-	guests[0].l_name = "Atkins";
-	guests[0].check_in_date = "3/3/2020";
-	guests[0].check_in_time = "12:00PM";
-	guests[0].check_out_date = "3/4/2020";
-	guests[0].check_out_time = "5:00PM";
-	guests[0].room_type = "K";
-	guests[0].room_num = 55;
-	guests[0].room_rate = 34;
-	guests[0].total_charge = 34;
-	guests[0].balance = 34;
+    cout << "\n\n\nWelcome to the current stay screen" << endl << endl;
+    
+    cout << "Here is the guest's information" << endl << endl;
 
-	cout << "\n\n\n\t\t\t---- List of current stays and guest's information ----" << endl;
+    cout << "Room number : " << the_guest->room_num << endl;
+    cout << "Guest name : " << the_guest->f_name << " " << the_guest->l_name << endl;
+    cout << "Check in date and time  : " << the_guest->check_in_date << " @ " << the_guest->check_in_time << endl;
+    cout << "Check out date and time : " << the_guest->check_out_date << " @ " << the_guest->check_out_time << endl;
+    cout << "Room type : " << the_guest->room_type << endl;
+    cout << "Room rate : $" << the_guest->room_rate << "/day" << endl;
+    cout << "Total charge : $" << the_guest->total_charge << endl;
+    cout << "Payments made : " << the_guest->payments_made << endl;
+    cout << "Balance : $" << the_guest->balance << endl;
 
-	for (int i = 0; i < 20; i++) {
-		cout << "---------------------------------" << endl;
-		cout << "Room num : " << guests[i].room_num << " Guest name : " << guests[i].f_name << " " << guests[i].l_name << endl;
-		cout << "Check in date and time  : " << guests[i].check_in_date << " @ " << guests[i].check_in_time << endl;
-		cout << "Check out date and time : " << guests[i].check_out_date << " @ " << guests[i].check_out_time << endl;
-		cout << "Room type : " << guests[i].room_type << " Room rate : " << guests[i].room_rate << endl;
-		cout << "Total charge : " << guests[i].total_charge << " Balance : " << guests[i].balance << endl;
-	}
-	system("PAUSE");
+    cout << endl << endl;
 }
 
 int main() {
