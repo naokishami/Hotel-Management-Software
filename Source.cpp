@@ -217,19 +217,15 @@ int main() {
 		cin >> select;
 		if (select == 1) {
 			h.roomStatus();
-
 		}
 	    if (select == 2) {
 			h.roomList();
-
 		}
 		if (select == 3) {
 			h.Reservations();
-
 		}
 		if (select == 4) {
 			h.houseKeeping();
-
 		}
 		if (select == 5) {
 
