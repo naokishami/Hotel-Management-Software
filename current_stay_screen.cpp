@@ -2,7 +2,6 @@
 #include <iostream>
 using namespace std;
 
-
 void hotel::currentStayScreen() {
     guest *the_guest = new guest();
 
