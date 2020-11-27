@@ -5,6 +5,8 @@
 #include <map>
 using namespace std;
 
+// hello
+
 class hotel {
 	int roomNumber;
 	char name[50];
