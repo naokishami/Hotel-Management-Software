@@ -6,8 +6,44 @@
 using namespace std;
 
 #include "hotel.h"
+#include "show_profile.h"
+#include "show_report.h"
 
 int main() {
+
+	GuestProfile g; 
+	g.first_name = "Bob";
+	g.last_name = "Smith";
+	g.address = "12345 Sample St.";
+	g.license_plate = "7459KF";
+	g.email = "test@email.com";
+	g.id_no = "8563895YN";
+	g.state = "California";
+	g.phone_no = "555-555-5555";
+
+	Reservation r1, r2, r3;
+	std::vector<Reservation> rvec;
+	r1.amt_paid = 100;
+	r2.amt_paid = 200;
+	r1.guest.first_name = "Sameple1";
+	r2.guest.first_name = "sampel2";
+	r1.guest.last_name = "last1";
+	r2.guest.last_name = "last2";
+	r1.room_number = 302;
+	r2.room_number = 303;
+	r1.check_in.year = 2020;
+	r1.check_in.day = 31;
+	r1.check_in.month = 3;
+	r2.check_in.year = 2020;
+	r2.check_in.day = 31;
+	r2.check_in.month = 4;
+	r1.check_out.year = 2020;
+	r1.check_out.month = 4;
+	r1.check_out.day = 3;
+	rvec.push_back(r1);
+	rvec.push_back(r2);
+	rvec.push_back(r3);
+
 	hotel h;
 	int select;
 	do {
@@ -37,7 +73,7 @@ int main() {
 			h.houseKeeping();
 		}
 		if (select == 5) {
-
+			ShowProfile(g);
 		}
 		if (select == 6) {
 			h.currentStayScreen();
@@ -46,7 +82,7 @@ int main() {
 			h.searchScreen();
 		}
 		if (select == 8) {
-
+			ShowReport(rvec);
 		}
 		if (select == 9) {
 			break;
