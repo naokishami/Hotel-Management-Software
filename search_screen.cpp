@@ -13,6 +13,7 @@ void hotel::search(string generic) {
 	cout << "Searching for " << value << "..." << endl << endl;
 	system("PAUSE");
 }
+
 void hotel::searchScreen() {
 	system("CLS");
 	cout << "\n\n\nWelcome to the search screen" << endl << endl;;

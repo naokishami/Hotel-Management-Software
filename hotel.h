@@ -160,4 +160,20 @@ public:
 	Date check_in;
 	Date check_out;
 	double amt_paid;
+
+
+	// added some fields - Naoki
+	std::string check_in_time;
+	std::string check_out_time;
+
+	float room_rate;
+	std::string room_type;	
+
+	float total_charge;
+	std::string payments_made;
+	float balance;
 };
+
+void currentStayScreen(Reservation res);
+int ShowProfile(GuestProfile profile);
+int ShowReport(std::vector<Reservation> reservation_list);

@@ -6,12 +6,10 @@
 using namespace std;
 
 #include "hotel.h"
-#include "show_profile.h"
-#include "show_report.h"
 
 int main() {
 
-	GuestProfile g; 
+	GuestProfile g;
 	g.first_name = "Bob";
 	g.last_name = "Smith";
 	g.address = "12345 Sample St.";
@@ -25,9 +23,7 @@ int main() {
 	std::vector<Reservation> rvec;
 	r1.amt_paid = 100;
 	r2.amt_paid = 200;
-	r1.guest.first_name = "Sameple1";
-	r2.guest.first_name = "sampel2";
-	r1.guest.last_name = "last1";
+	r1.guest = g;
 	r2.guest.last_name = "last2";
 	r1.room_number = 302;
 	r2.room_number = 303;
@@ -40,6 +36,15 @@ int main() {
 	r1.check_out.year = 2020;
 	r1.check_out.month = 4;
 	r1.check_out.day = 3;
+
+	r1.check_in_time = "5:00PM";
+	r1.check_out_time = "11:00AM";
+	r1.room_rate = 34.56;
+	r1.room_type = "K";
+	r1.total_charge = 45.67;
+	r1.payments_made = "Credit";
+	r1.balance = 0;
+
 	rvec.push_back(r1);
 	rvec.push_back(r2);
 	rvec.push_back(r3);
@@ -76,7 +81,7 @@ int main() {
 			ShowProfile(g);
 		}
 		if (select == 6) {
-			h.currentStayScreen();
+			currentStayScreen(r1);
 		}
 		if (select == 7) {
 			h.searchScreen();
