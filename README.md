@@ -2,6 +2,14 @@
 Class project to demonstrate software testing skills
 
 
+To run the program:
+-------
+    > make
+    > ./output
+
+    > make clean        # cleans output
+
+
 Your group has been hired by HotelX, a large hotel chain, to develop their hotel management software.  The software will handle most of the functionality for the Front Desk staff. 
 
 The hotel would like the following capabilities:
@@ -23,11 +31,3 @@ Capability 7: A search screen to search for guests
 Capability 8: A daily report screen
 
 Capability 9: (For Grad Students Only)  Customer Reservation Screen. 
-
-
-To run the program:
--------
-    > make
-    > ./output
-
-    > make clean        # cleans output
