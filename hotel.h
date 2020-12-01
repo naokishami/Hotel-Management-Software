@@ -201,6 +201,12 @@ class Hotel {
 
 	}
 
+	std::vector<Reservation> get_all_reservations() {
+
+	}
+
+	
+
 };
 
 std::string currentStayScreen(Reservation* res, int room_number = -99);
