@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 class hotel {
 	int roomNumber;
@@ -174,6 +175,34 @@ public:
 	float balance;
 };
 
-void currentStayScreen(Reservation res);
+
+class Hotel {
+	std::vector<Reservation> reservations;
+
+	Hotel() {
+		for (int i = 0; i < 140; i++) {
+			add_reservation();
+		}
+	}
+
+	void add_reservation() {
+
+	}
+
+	void del_reservation() {
+
+	}
+
+	Reservation find_reservation(GuestProfile gp) {
+
+	}
+
+	GuestProfile get_profile(Reservation res) {
+
+	}
+
+};
+
+std::string currentStayScreen(Reservation* res, int room_number = -99);
 int ShowProfile(GuestProfile profile);
 int ShowReport(std::vector<Reservation> reservation_list);

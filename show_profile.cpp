@@ -1,5 +1,3 @@
-#pragma once
-
 #include "hotel.h"
 #include <iostream>
 #include <string>

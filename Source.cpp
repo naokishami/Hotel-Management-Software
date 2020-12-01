@@ -49,6 +49,8 @@ int main() {
 	rvec.push_back(r2);
 	rvec.push_back(r3);
 
+	Reservation *r_nullptr = nullptr;
+
 	hotel h;
 	int select;
 	do {
@@ -81,7 +83,7 @@ int main() {
 			ShowProfile(g);
 		}
 		if (select == 6) {
-			currentStayScreen(r1);
+			currentStayScreen(r_nullptr);
 		}
 		if (select == 7) {
 			h.searchScreen();
