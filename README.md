@@ -9,7 +9,8 @@ Running the program:
 
     > make clean        # cleans output
 
-
+Project description:
+-------
 Your group has been hired by HotelX, a large hotel chain, to develop their hotel management software.  The software will handle most of the functionality for the Front Desk staff. 
 
 The hotel would like the following capabilities:
