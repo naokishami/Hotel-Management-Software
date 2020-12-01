@@ -2,7 +2,7 @@
 Class project to demonstrate software testing skills
 
 
-To run the program:
+Running the program:
 -------
     > make
     > ./output
