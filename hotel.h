@@ -1,6 +1,8 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
+using namespace std;
 
 class hotel {
 	int roomNumber;
@@ -173,39 +175,73 @@ public:
 	float total_charge;
 	std::string payments_made;
 	float balance;
+
+	Reservation() {
+		guest = GuestProfile();
+		room_number = -1;
+		check_in = Date();
+		check_out = Date();
+		amt_paid = -1;
+		check_in_time = "Not set";
+		check_out_time = "Not set";
+		room_rate = -1;
+		room_type = "Not set";
+		total_charge = -1;
+		payments_made = "Not set";
+		balance = -1;
+	}
+
+
+	Reservation(GuestProfile guestprofile, int roomNum, Date checkIn, Date checkOut,
+				double amtPaid = 0, std::string checkInTime = "Not set", 
+				std::string checkOutTime = "Not set", float roomRate = 0,
+				std::string roomType = "Not set", float totalCharge = 0,
+				std::string paymentsMade = "Not set", float bal = 0) {
+
+		guest = guestprofile;
+		room_number = roomNum;
+		check_in = checkIn;
+		check_out = checkOut;
+		amt_paid = amtPaid;
+		check_in_time = checkInTime;
+		check_out_time = checkOutTime;
+		room_rate = roomRate;
+		room_type = roomType;
+		total_charge = totalCharge;
+		payments_made = paymentsMade;
+		balance = bal;
+
+	}
 };
 
 
 class Hotel {
-	std::vector<Reservation> reservations;
+public:
+
+	std::vector<Reservation> res;
 
 	Hotel() {
-		for (int i = 0; i < 140; i++) {
-			add_reservation();
-		}
 	}
 
-	void add_reservation() {
-
+	void add_empty_reservation() {
+		res.push_back(Reservation());
 	}
 
-	void del_reservation() {
-
+	void add_reservation(Reservation resv) {
+		res.push_back(resv);
 	}
 
-	Reservation find_reservation(GuestProfile gp) {
+	// void del_reservation() {
 
-	}
+	// }
 
-	GuestProfile get_profile(Reservation res) {
+	// Reservation find_reservation(GuestProfile gp) {
 
-	}
+	// }
 
-	std::vector<Reservation> get_all_reservations() {
+	// GuestProfile get_profile(Reservation res) {
 
-	}
-
-	
+	// }
 
 };
 
