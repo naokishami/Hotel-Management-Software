@@ -17,7 +17,6 @@ public:
 	void Reservations();
 	void houseKeeping();
 	void search(std::string generic);
-	void searchScreen();
 	void currentStayScreen();
 
 };
@@ -66,7 +65,7 @@ struct reservation
 
 
 class GuestProfile {
-public:
+private:
 	std::string first_name = "";
 	std::string last_name = "";
 	std::string address = "";
@@ -77,6 +76,80 @@ public:
 	std::string phone_no = "";
 
 public:
+	GuestProfile() {
+
+	}
+
+	void print_guest() {
+		cout << "Printing guest details..." << endl;
+
+		cout << "First name : " << first_name << endl;
+		cout << "Last name : " << last_name << endl;
+		cout << "Address : " << address << endl;
+		cout << "License plate : " << license_plate << endl;
+		cout << "Email : " << email << endl;
+		cout << "Id number : " << id_no << endl;
+		cout << "State : " << state << endl;
+		cout << "Phone number : " << phone_no << endl;
+	}
+
+	void create_new_profile() {
+		cout << "Enter the following fields..." << endl;
+
+		cout << "First name : ";
+		cin >> first_name;
+		cout << "Last name : ";
+		cin >> last_name;
+		cout << "Address : ";
+		cin >> address;
+		cout << "License plate : ";
+		cin >> license_plate;
+		cout << "Email : ";
+		cin >> email;
+		cout << "Id number : ";
+		cin >> id_no;
+		cout << "State : ";
+		cin >> state;
+		cout << "Phone number : ";
+		cin >> phone_no;
+	}
+
+	void change_profile(std::string choice) {
+		if (choice == "first name") {
+			cout << "What is the new first name? ";
+			cin >> first_name;
+		}
+		else if (choice == "last name") {
+			cout << "What is the new last name? ";
+			cin >> last_name;
+		}
+		else if (choice == "address") {
+			cout << "What is the new address? ";
+			cin >> address;
+		}
+		else if (choice == "license plate") {
+			cout << "What is the new license plate? ";
+			cin >> license_plate;
+		}
+		else if (choice == "email") {
+			cout << "What is the new email? ";
+			cin >> email;
+		}
+		else if (choice == "id number") {
+			cout << "What is the new id number? ";
+			cin >> id_no;
+		}
+		else if (choice == "state") {
+			cout << "What is the new state? ";
+			cin >> state;
+		}
+		else if (choice == "phone number") {
+			cout << "What is the new phone number? ";
+			cin >> phone_no;
+		}
+		
+	}
+
 	std::string GetFirstName() {
 		return first_name;
 	}
@@ -130,11 +203,32 @@ public:
 
 class Date {
 public:
-	int year = -1;
-	int month = -1;
+	int year = 2020;
+	int month = 12;
 	int day = -1;
 
 public:
+	Date(int _month, int _day, int _year) {
+		day = _day;
+		month = _month;
+		year = _year;
+	}
+	Date() {};
+
+	void change_date() {
+		cout << "What is the new date? " << endl;
+		cout << "Month: ";
+		cin >> month;
+		cout << "Day: ";
+		cin >> day;
+		cout << "Year: ";
+		cin >> year;
+	}
+
+	void print_date() {
+		cout << month << "/" << day << "/" << year << endl;
+	}
+
 	int GetYear() {
 		return year;
 	}
@@ -212,39 +306,130 @@ public:
 		balance = bal;
 
 	}
+
+	void create_new_reservation() {
+
+	}
+
+	void add_guest(GuestProfile* _guest) {
+		guest = *_guest;
+	}
+
+	void print_reservation() {
+		guest.print_guest();
+
+		cout << "Printing reservation details..." << endl;
+
+		cout << "Room number : " << room_number << endl;
+		cout << "Check in date : ";
+		check_in.print_date();
+		cout << "Check out date : ";
+		check_out.print_date();
+		cout << "Amount paid : " << amt_paid << endl;
+		cout << "Check in time : " << check_in_time << endl;
+		cout << "Check out time : " << check_out_time << endl;
+		cout << "Room rate : " << room_rate << endl;
+		cout << "Room type : " << room_type << endl;
+		cout << "Total charge : " << total_charge << endl;
+		cout << "Payments made : " << payments_made << endl;
+		cout << "Balance : " << balance << endl;
+
+	}
+
+	void change_reservation(std::string choice) {
+		if (choice == "room number") {
+			cout << "What is the new room number? ";
+			cin >> room_number;
+		}
+		if (choice == "check in date") {
+			check_in.change_date();
+		}
+		if (choice == "check out date") {
+			check_out.change_date();
+		}
+		if (choice == "amount paid") {
+			cout << "What is the new amount paid? ";
+			cin >> amt_paid;
+		}
+		if (choice == "check in time") {
+			cout << "What is the new check in time? ";
+			cin >> check_in_time;
+		}
+		if (choice == "check out time") {
+			cout << "What is the new check out time? ";
+			cin >> check_out_time;
+		}
+		if (choice == "room rate") {
+			cout << "What is the new room rate? ";
+			cin >> room_rate;
+		}
+		if (choice == "room type") {
+			cout << "What is the new room type? ";
+			cin >> room_type;
+		}
+		if (choice == "total charge") {
+			cout << "What is the new total charge? ";
+			cin >> total_charge;
+		}
+		if (choice == "payments made") {
+			cout << "What is the new payments made? ";
+			cin >> payments_made;
+		}
+		if (choice == "balance") {
+			cout << "What is the new balance? ";
+			cin >> balance;
+		}
+	}
+};
+
+class Room {
+public:
+	int roomNum;
+	std::string status;
+	Date day;
 };
 
 
 class Hotel {
+private:
+	std::vector<Reservation> reservation;
+	// this will be created so that we can keep track of the room status
+	// for a particular day
+	Room hotel_rooms[140];
+
 public:
-
-	std::vector<Reservation> res;
-
 	Hotel() {
+
+		// loop through all the rooms
+		for (int i = 1; i <= 20; i++) {
+			// loop through 7 days
+			for (int j = 1; j <= 7; j++) {
+				// loop through all 140 rooms for the total 7 days
+				for (int k = 1; k <= 140; k++) {
+					hotel_rooms[k].roomNum = i;
+					hotel_rooms[k].day.SetDay(j);
+					hotel_rooms[k].status = "Available";
+				}
+			}
+		}
+
 	}
 
-	void add_empty_reservation() {
-		res.push_back(Reservation());
+	void add_reservation(Reservation* resv) {
+		reservation.push_back(*resv);
 	}
 
-	void add_reservation(Reservation resv) {
-		res.push_back(resv);
+	void change_room_status(int roomNum, Date date, std::string change_to_status) {
+		hotel_rooms[roomNum * date.day].status = change_to_status;
 	}
 
-	// void del_reservation() {
-
-	// }
-
-	// Reservation find_reservation(GuestProfile gp) {
-
-	// }
-
-	// GuestProfile get_profile(Reservation res) {
-
-	// }
+	std::string getRoomStatus(int roomNum, Date lookUpDate) {
+		return hotel_rooms[roomNum * lookUpDate.day].status;
+	}
 
 };
 
-std::string currentStayScreen(Reservation* res, int room_number = -99);
+std::string currentStayScreen(GuestProfile* guest, Reservation* res, int roomNum, Hotel* the_hotel);
 int ShowProfile(GuestProfile profile);
 int ShowReport(std::vector<Reservation> reservation_list);
+GuestProfile searchScreen();

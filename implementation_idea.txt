@@ -1,0 +1,80 @@
+
+Trying to figure out the most simple way to implement a hotel management software.
+
+
+What I believe to be the key classes:
+------------------------
+class Hotel
+	- vector of Reservation(s)
+	- array of Room(s) ---> 140 hotel rooms for each room for each day ---> 20 rooms * 7 days
+
+class Room
+	- roomNum
+	- status
+	- Date
+
+class Reservation
+	- GuestProfile (an instance of GuestProfile)
+	- roomNum
+	- Date
+
+class GuestProfile
+	- name
+	- address
+	- etc.
+
+class Date
+	- year
+	- month
+	- day
+------------------------
+Note: if there is no reservation for a room, we can assume it is available
+
+The reason we're creating 140 rooms is so that it is easier to get the room status.
+For example, if we wanted the status for room # 18 on day 3, then we can just look at
+	the 18 * 3 = 54th element in the array and get the status from there
+
+
+How the program will work:
+
+1. a Hotel object will be created
+	- this hotel object will initially hold an empty vector of Reservations
+2. Reservations will be created within the hotel
+	- this will hold all the necessary info like Guest, Room, status, etc.
+
+
+*** Not sure how the Housekeeping data shall be kept.
+We can probably look at all the rooms and check to see if there is a guest checked in.
+If so, then the status will be occupied...
+If a guest checks out, we'll need to change the status to dirty
+And then Capability 4 will manage changing the status from dirty to available
+
+
+
+Further, we can create a vector of empty rooms so that the hotel class will
+	look like:?
+
+class Hotel
+	- vector of Reservation(s)
+	- vector of empty Room(s)?
+
+
+
+Capability 6 - Current Stay Screen:
+
+	Calling this function:
+		- 	When Capability 1 or 2 is calling this Capability, it will need to pass either
+			an empty GuestProfile instance (for NO guest checked in) or a valid 
+			GuestProfile instance (for A guest checked in). 
+		- 	When Capability 2 or 3 is calling this Capability, it will need to pass a 
+			valid Reservation instance. 
+		- 	Note: if there is no guest or reservation to pass, then create an empty
+			guest instance or reservation instance
+		
+	Return type of this function:
+		After a guest checks in, this Capability will return a string indicating 
+			the status of the room. (unavaliable/available/dirty)
+
+	Signature of this function:
+		std::string currentStayScreen(GuestProfile* guest, Reservation* res)
+	

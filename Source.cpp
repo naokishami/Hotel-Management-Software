@@ -9,49 +9,53 @@ using namespace std;
 
 int main() {
 
-	GuestProfile g;
-	g.first_name = "Bob";
-	g.last_name = "Smith";
-	g.address = "12345 Sample St.";
-	g.license_plate = "7459KF";
-	g.email = "test@email.com";
-	g.id_no = "8563895YN";
-	g.state = "California";
-	g.phone_no = "555-555-5555";
+	// GuestProfile g;
+	// g.first_name = "Bob";
+	// g.last_name = "Smith";
+	// g.address = "12345 Sample St.";
+	// g.license_plate = "7459KF";
+	// g.email = "test@email.com";
+	// g.id_no = "8563895YN";
+	// g.state = "California";
+	// g.phone_no = "555-555-5555";
 
-	Reservation r1, r2, r3;
-	std::vector<Reservation> rvec;
-	r1.amt_paid = 100;
-	r2.amt_paid = 200;
-	r1.guest = g;
-	r2.guest.last_name = "last2";
-	r1.room_number = 302;
-	r2.room_number = 303;
-	r1.check_in.year = 2020;
-	r1.check_in.day = 31;
-	r1.check_in.month = 3;
-	r2.check_in.year = 2020;
-	r2.check_in.day = 31;
-	r2.check_in.month = 4;
-	r1.check_out.year = 2020;
-	r1.check_out.month = 4;
-	r1.check_out.day = 3;
+	// Reservation r1, r2, r3;
+	// std::vector<Reservation> rvec;
+	// r1.amt_paid = 100;
+	// r2.amt_paid = 200;
+	// r1.guest = g;
+	// r2.guest.last_name = "last2";
+	// r1.room_number = 302;
+	// r2.room_number = 303;
+	// r1.check_in.year = 2020;
+	// r1.check_in.day = 31;
+	// r1.check_in.month = 3;
+	// r2.check_in.year = 2020;
+	// r2.check_in.day = 31;
+	// r2.check_in.month = 4;
+	// r1.check_out.year = 2020;
+	// r1.check_out.month = 4;
+	// r1.check_out.day = 3;
 
-	r1.check_in_time = "5:00PM";
-	r1.check_out_time = "11:00AM";
-	r1.room_rate = 34.56;
-	r1.room_type = "K";
-	r1.total_charge = 45.67;
-	r1.payments_made = "Credit";
-	r1.balance = 0;
+	// r1.check_in_time = "5:00PM";
+	// r1.check_out_time = "11:00AM";
+	// r1.room_rate = 34.56;
+	// r1.room_type = "K";
+	// r1.total_charge = 45.67;
+	// r1.payments_made = "Credit";
+	// r1.balance = 0;
 
-	rvec.push_back(r1);
-	rvec.push_back(r2);
-	rvec.push_back(r3);
+	// rvec.push_back(r1);
+	// rvec.push_back(r2);
+	// rvec.push_back(r3);
 
 	Reservation *r_nullptr = nullptr;
+	GuestProfile *g_nullptr = nullptr;
 
 	hotel h;
+
+	Hotel *the_hotel;
+
 	int select;
 	do {
 		system("CLS");
@@ -79,18 +83,18 @@ int main() {
 		if (select == 4) {
 			h.houseKeeping();
 		}
-		if (select == 5) {
-			ShowProfile(g);
-		}
+		// if (select == 5) {
+		// 	ShowProfile(g);
+		// }
 		if (select == 6) {
-			currentStayScreen(r_nullptr);
+			currentStayScreen(g_nullptr, r_nullptr, 42, the_hotel);
 		}
 		if (select == 7) {
-			h.searchScreen();
+			searchScreen();
 		}
-		if (select == 8) {
-			ShowReport(rvec);
-		}
+		// if (select == 8) {
+		// 	ShowReport(rvec);
+		// }
 		if (select == 9) {
 			break;
 		}
@@ -99,11 +103,27 @@ int main() {
 
 
 
-	system("PAUSE");
-	return 0;
+	// system("PAUSE");
+	// return 0;
 
 
 	// Hotel my_hotel;
+
+	// Date date = Date(12, 1, 2020);
+
+	// cout << my_hotel.getRoomStatus(4, date) << endl;
+
+	// my_hotel.change_room_status(4, date, "Unavailable");
+
+	// cout << my_hotel.getRoomStatus(4, date) << endl;	
+
+
+	// GuestProfile new_guest;
+	// new_guest.create_new_profile();
+
+	// cout << new_guest.GetFirstName() << endl;
+
+	// return 0;
 
 	// cout << "hotel constructed from Src" << endl;
 

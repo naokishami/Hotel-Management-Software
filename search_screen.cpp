@@ -3,7 +3,7 @@
 #include <map>
 using namespace std;
 
-void hotel::search(string generic) {
+void search(string generic) {
 	//system("CLS");
 	cout << "\nWhat is the " << generic << "? ";
 
@@ -14,7 +14,7 @@ void hotel::search(string generic) {
 	system("PAUSE");
 }
 
-void hotel::searchScreen() {
+GuestProfile searchScreen() {
 	system("CLS");
 	cout << "\n\n\nWelcome to the search screen" << endl << endl;;
 
@@ -41,4 +41,8 @@ void hotel::searchScreen() {
 	look_up_table[7] = "check out date";
 
 	search(look_up_table[num]);
+
+	GuestProfile temp;
+
+	return temp;
 }
