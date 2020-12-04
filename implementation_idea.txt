@@ -28,7 +28,8 @@ class Date
 	- month
 	- day
 ------------------------
-Note: if there is no reservation for a room, we can assume it is available
+Note: The Date range will be from 12/1/2020 to 12/7/2020. If we use anything outside 
+		of this range, the hotel object won't work properly. 
 
 The reason we're creating 140 rooms is so that it is easier to get the room status.
 For example, if we wanted the status for room # 18 on day 3, then we can just look at
@@ -39,6 +40,7 @@ How the program will work:
 
 1. a Hotel object will be created
 	- this hotel object will initially hold an empty vector of Reservations
+	- 140 available rooms will be created
 2. Reservations will be created within the hotel
 	- this will hold all the necessary info like Guest, Room, status, etc.
 

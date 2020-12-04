@@ -81,16 +81,16 @@ public:
 	}
 
 	void print_guest() {
-		cout << "Printing guest details..." << endl;
+		cout << "Printing guest details..." << endl << endl;
 
-		cout << "First name : " << first_name << endl;
-		cout << "Last name : " << last_name << endl;
-		cout << "Address : " << address << endl;
-		cout << "License plate : " << license_plate << endl;
-		cout << "Email : " << email << endl;
-		cout << "Id number : " << id_no << endl;
-		cout << "State : " << state << endl;
-		cout << "Phone number : " << phone_no << endl;
+		cout << "First name : \t\t\t" << first_name << endl;
+		cout << "Last name : \t\t\t" << last_name << endl;
+		cout << "Address : \t\t\t" << address << endl;
+		cout << "License plate : \t\t" << license_plate << endl;
+		cout << "Email : \t\t\t" << email << endl;
+		cout << "Id number : \t\t\t" << id_no << endl;
+		cout << "State : \t\t\t" << state << endl;
+		cout << "Phone number : \t\t\t" << phone_no << endl;
 	}
 
 	void create_new_profile() {
@@ -101,7 +101,8 @@ public:
 		cout << "Last name : ";
 		cin >> last_name;
 		cout << "Address : ";
-		cin >> address;
+		cin.ignore(1);
+		getline(cin, address);
 		cout << "License plate : ";
 		cin >> license_plate;
 		cout << "Email : ";
@@ -225,6 +226,15 @@ public:
 		cin >> year;
 	}
 
+	void create_new_date() {
+		cout << "Month : ";
+		cin >> month;
+		cout << "Day : ";
+		cin >> day;
+		cout << "Year : ";
+		cin >> year;
+	}
+
 	void print_date() {
 		cout << month << "/" << day << "/" << year << endl;
 	}
@@ -286,13 +296,13 @@ public:
 	}
 
 
-	Reservation(GuestProfile guestprofile, int roomNum, Date checkIn, Date checkOut,
+	Reservation(GuestProfile* guestprofile, int roomNum, Date checkIn, Date checkOut,
 				double amtPaid = 0, std::string checkInTime = "Not set", 
 				std::string checkOutTime = "Not set", float roomRate = 0,
 				std::string roomType = "Not set", float totalCharge = 0,
 				std::string paymentsMade = "Not set", float bal = 0) {
 
-		guest = guestprofile;
+		guest = *guestprofile;
 		room_number = roomNum;
 		check_in = checkIn;
 		check_out = checkOut;
@@ -307,7 +317,58 @@ public:
 
 	}
 
+	void create_new_reservation(int roomNumber_, Date date) {
+		room_number = roomNumber_;
+		check_in = date;
+
+		cout << "Room number : " << roomNumber_ << endl;
+		cout << "Check in date : ";
+		date.print_date();
+		cout << "Check out date : ";
+		check_out.create_new_date();
+		cout << "Amount paid : ";
+		cin >> amt_paid;
+		cout << "Check in time : ";
+		cin >> check_in_time;
+		cout << "Check out time : ";
+		cin >> check_out_time;
+		cout << "Room rate : ";
+		cin >> room_rate;
+		cout << "Room type : ";
+		cin >> room_type;
+		cout << "Total charge : ";
+		cin >> total_charge;
+		cout << "Payments made : ";
+		cin >> payments_made;
+		cout << "Balance : ";
+		cin >> balance;
+
+	}	
+
 	void create_new_reservation() {
+
+		cout << "Room number : ";
+		cin >> room_number;
+		cout << "Check in date : ";
+		check_in.create_new_date();
+		cout << "Check out date : ";
+		check_out.create_new_date();
+		cout << "Amount paid : ";
+		cin >> amt_paid;
+		cout << "Check in time : ";
+		cin >> check_in_time;
+		cout << "Check out time : ";
+		cin >> check_in_time;
+		cout << "Room rate : ";
+		cin >> room_rate;
+		cout << "Room type : ";
+		cin >> room_type;
+		cout << "Total charge : ";
+		cin >> total_charge;
+		cout << "Payments made : ";
+		cin >> payments_made;
+		cout << "Balance : ";
+		cin >> balance;
 
 	}
 
@@ -318,21 +379,21 @@ public:
 	void print_reservation() {
 		guest.print_guest();
 
-		cout << "Printing reservation details..." << endl;
+		cout << "\nPrinting reservation details..." << endl << endl;
 
-		cout << "Room number : " << room_number << endl;
-		cout << "Check in date : ";
+		cout << "Room number : \t\t\t" << room_number << endl;
+		cout << "Check in date...\t\t";
 		check_in.print_date();
-		cout << "Check out date : ";
+		cout << "Check out date...\t\t";
 		check_out.print_date();
-		cout << "Amount paid : " << amt_paid << endl;
-		cout << "Check in time : " << check_in_time << endl;
-		cout << "Check out time : " << check_out_time << endl;
-		cout << "Room rate : " << room_rate << endl;
-		cout << "Room type : " << room_type << endl;
-		cout << "Total charge : " << total_charge << endl;
-		cout << "Payments made : " << payments_made << endl;
-		cout << "Balance : " << balance << endl;
+		cout << "Amount paid : \t\t\t" << amt_paid << endl;
+		cout << "Check in time : \t\t" << check_in_time << endl;
+		cout << "Check out time : \t\t" << check_out_time << endl;
+		cout << "Room rate : \t\t\t" << room_rate << endl;
+		cout << "Room type : \t\t\t" << room_type << endl;
+		cout << "Total charge : \t\t\t" << total_charge << endl;
+		cout << "Payments made : \t\t" << payments_made << endl;
+		cout << "Balance : \t\t\t" << balance << endl;
 
 	}
 
@@ -396,6 +457,7 @@ private:
 	// this will be created so that we can keep track of the room status
 	// for a particular day
 	Room hotel_rooms[140];
+	// map<GuestProfile, Reservation> booking_log;
 
 public:
 	Hotel() {
@@ -415,7 +477,15 @@ public:
 
 	}
 
+	// void create_new_log(GuestProfile guest, Reservation res) {
+	// 	booking_log.insert({guest, res});
+	// }
+
 	void add_reservation(Reservation* resv) {
+		reservation.push_back(*resv);
+	}
+
+	void add_reservation(std::shared_ptr<Reservation> resv) {
 		reservation.push_back(*resv);
 	}
 
@@ -429,7 +499,8 @@ public:
 
 };
 
-std::string currentStayScreen(GuestProfile* guest, Reservation* res, int roomNum, Hotel* the_hotel);
+std::string currentStayScreen(GuestProfile* guest, Reservation* reservation, int roomNum, Date date, std::shared_ptr<Hotel> the_hotel);
+// std::string currentStayScreen(std::shared_ptr<GuestProfile> shared_guest_ptr, std::shared_ptr<Reservation> shared_res_ptr, int roomNum, std::shared_ptr<Hotel> the_hotel);
 int ShowProfile(GuestProfile profile);
 int ShowReport(std::vector<Reservation> reservation_list);
 GuestProfile searchScreen();

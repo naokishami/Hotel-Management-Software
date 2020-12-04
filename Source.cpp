@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 using namespace std;
 
 #include "hotel.h"
@@ -49,12 +50,16 @@ int main() {
 	// rvec.push_back(r2);
 	// rvec.push_back(r3);
 
-	Reservation *r_nullptr = nullptr;
-	GuestProfile *g_nullptr = nullptr;
+	// std::shared_ptr<Reservation> r_nullptr(nullptr);
+	// std::shared_ptr<GuestProfile> g_nullptr(nullptr);
+
+	Reservation* r_nullptr = nullptr;
+	GuestProfile* g_nullptr = nullptr;
+	Date date = Date(12, 1, 2020);
 
 	hotel h;
 
-	Hotel *the_hotel;
+	std::shared_ptr<Hotel> the_hotel = std::make_shared<Hotel>();
 
 	int select;
 	do {
@@ -87,7 +92,7 @@ int main() {
 		// 	ShowProfile(g);
 		// }
 		if (select == 6) {
-			currentStayScreen(g_nullptr, r_nullptr, 42, the_hotel);
+			currentStayScreen(g_nullptr, r_nullptr, 42, date, the_hotel);
 		}
 		if (select == 7) {
 			searchScreen();
@@ -100,7 +105,6 @@ int main() {
 		}
 
 	} while (select !=9);
-
 
 
 	// system("PAUSE");
