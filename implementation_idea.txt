@@ -71,12 +71,12 @@ Capability 6 - Current Stay Screen:
 		- 	When Capability 2 or 3 is calling this Capability, it will need to pass a 
 			valid Reservation instance. 
 		- 	Note: if there is no guest or reservation to pass, then create an empty
-			guest instance or reservation instance
+			guest instance or reservation instance (as a nullptr)
 		
 	Return type of this function:
 		After a guest checks in, this Capability will return a string indicating 
 			the status of the room. (unavaliable/available/dirty)
 
 	Signature of this function:
-		std::string currentStayScreen(GuestProfile* guest, Reservation* res)
-	
+		std::string currentStayScreen(GuestProfile* guest, Reservation* reservation, 
+							int roomNum, Date date, std::shared_ptr<Hotel> the_hotel);
