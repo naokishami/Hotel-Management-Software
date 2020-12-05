@@ -80,6 +80,18 @@ public:
 
 	}
 
+	bool operator==(const GuestProfile& other) {
+		if (other.first_name != first_name)	return false;
+		else if (other.last_name != last_name) return false;
+		else if (other.address != address) return false;
+		else if (other.license_plate != license_plate) return false;
+		else if (other.email != email) return false;
+		else if (other.id_no != id_no) return false;
+		else if (other.state != state) return false;
+		else if (other.phone_no != phone_no) return false;
+		else return true;
+	}
+
 	void print_guest() {
 		cout << "Printing guest details..." << endl << endl;
 
@@ -453,10 +465,11 @@ public:
 
 class Hotel {
 private:
-	std::vector<Reservation> reservation;
+	std::vector<Reservation> hotel_reservations;
 	// this will be created so that we can keep track of the room status
 	// for a particular day
 	Room hotel_rooms[140];
+
 	// map<GuestProfile, Reservation> booking_log;
 
 public:
@@ -478,15 +491,31 @@ public:
 	}
 
 	// void create_new_log(GuestProfile guest, Reservation res) {
-	// 	booking_log.insert({guest, res});
+	// 	booking_log.insert(pair<GuestProfile, Reservation>(guest, res));
 	// }
 
+
+	std::string search_for_guest(GuestProfile* _guest) {
+		auto iter = hotel_reservations.begin();
+		
+		for ( ; iter != hotel_reservations.end(); iter++) {
+			if ((*iter).guest == *_guest) {
+				return "Guest found!";	
+			}
+		}
+		return "Guest not found";
+	}
+
+	void search_by_pair(std::string value, std::string member) {
+		
+	}
+
 	void add_reservation(Reservation* resv) {
-		reservation.push_back(*resv);
+		hotel_reservations.push_back(*resv);
 	}
 
 	void add_reservation(std::shared_ptr<Reservation> resv) {
-		reservation.push_back(*resv);
+		hotel_reservations.push_back(*resv);
 	}
 
 	void change_room_status(int roomNum, Date date, std::string change_to_status) {

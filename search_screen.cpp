@@ -3,7 +3,7 @@
 #include <map>
 using namespace std;
 
-void search(string generic) {
+void search(string generic, std::shared_ptr<Hotel> the_hotel) {
 	//system("CLS");
 	cout << "\nWhat is the " << generic << "? ";
 
@@ -11,10 +11,16 @@ void search(string generic) {
 	getline(cin >> ws, value);
 
 	cout << "Searching for " << value << "..." << endl << endl;
+
+	std::pair <std::string, std::string> search_pair;
+	search_pair = std::make_pair(value, generic);
+
+	
+
 	system("PAUSE");
 }
 
-GuestProfile searchScreen() {
+GuestProfile searchScreen(std::shared_ptr<Hotel> the_hotel) {
 	system("CLS");
 	cout << "\n\n\nWelcome to the search screen" << endl << endl;;
 
@@ -40,7 +46,7 @@ GuestProfile searchScreen() {
 	look_up_table[6] = "check in date";
 	look_up_table[7] = "check out date";
 
-	search(look_up_table[num]);
+	search(look_up_table[num], the_hotel);
 
 	GuestProfile temp;
 

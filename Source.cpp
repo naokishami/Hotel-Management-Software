@@ -53,6 +53,8 @@ int main() {
 	// std::shared_ptr<Reservation> r_nullptr(nullptr);
 	// std::shared_ptr<GuestProfile> g_nullptr(nullptr);
 
+
+
 	Reservation* r_nullptr = nullptr;
 	GuestProfile* g_nullptr = nullptr;
 	Date date = Date(12, 1, 2020);
@@ -105,6 +107,20 @@ int main() {
 		}
 
 	} while (select !=9);
+
+
+	GuestProfile* temp;
+	temp->create_new_profile();
+	
+	std::string resp = the_hotel->search_for_guest(temp);
+	cout << resp << endl;
+
+	// map<GuestProfile, Reservation>::iterator itr;
+	// for (itr = booking_log.begin(); itr != booking_log.end(); ++itr) {
+	// 	cout << '\t' << itr-
+	// }
+
+
 
 
 	// system("PAUSE");
